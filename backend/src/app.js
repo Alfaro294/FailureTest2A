@@ -18,10 +18,11 @@ import notificationRoutes from "./routes/notificationRoutes.js";
 import geocodingRoutes from "./routes/geocodingRoutes.js";
 import closureDateRoutes from "./routes/closureDateRoutes.js";
 import fontRoutes from "./routes/fontRoutes.js";
-
+// Error de importacion
+import cors from "cors"
 
 //rutas publicas
-import cartRoutes from "./routes/cartRoutes.js";
+import cartRoutes from "./routes/cart.js";
 import userRoutes from "./routes/users.js";
 
 const app = express();
@@ -33,7 +34,6 @@ app.use(
     credentials: true,
   })
 );
-
 app.use(express.json({ limit: "10mb" }));
 app.use(express.urlencoded({ extended: true }));
 

@@ -2,7 +2,7 @@ import Order from '../models/Order.js';
 import Cart from '../models/Cart.js';
 import Product from '../models/Product.js';
 import Counter from '../models/Counter.js';
-import { createNotification } from './notificationController.js';
+import { createNotifications } from './notificationController.js';
 import { sendCriticalStockAlert, sendOutOfStockAlert, sendOrderStatusUpdate } from '../services/emailService.js';
 import Settings from '../models/Settings.js';
 import fs from 'fs';
@@ -187,7 +187,7 @@ export const createOrder = async (req, res) => {
                         // Check for low stock notification for this variant
                         if (newVariantStock <= 5 && newVariantStock > 0) {
                             const variantDesc = [item.size, item.color].filter(Boolean).join(' - ');
-                            await createNotification({
+                            await createNotifications({
                                 type: 'low_stock',
                                 message: `Stock bajo para ${product.name}${variantDesc ? ` (${variantDesc})` : ''}: ${newVariantStock} unidades`,
                                 metadata: { productId: product._id, variantId: product.variants[variantIndex]._id }

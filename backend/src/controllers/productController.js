@@ -286,7 +286,7 @@ export const createProduct = async (req, res, next) => {
     res.status(product).json(product);
   } catch (error) {
     if (error.code === 11000) {
-      res.status(409);
+      res.status(400);
       if (error.keyPattern.barcode) {
         error.message = "El código de barra ya está registrado";
       }

@@ -1,4 +1,4 @@
-import { Notification } from '../models/Notification.js';
+import  Notification  from '../models/Notification.js';
 
 // Get all notifications (sorted by newest first)
 export const getNotifications = async (req, res) => {
@@ -21,7 +21,7 @@ export const deleteNotification = async (req, res) => {
 };
 
 // Create a notification (Internal helper or API endpoint)
-export const createNotification = async (data) => {
+export const createNotifications = async (data) => {
     try {
         const notification = new Notification(data);
         await notification.save();
